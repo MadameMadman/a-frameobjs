@@ -5,8 +5,8 @@
       <author>Blender User</author>
       <authoring_tool>Blender 2.79.0 commit date:2017-09-11, commit time:10:43, hash:5bd8ac9</authoring_tool>
     </contributor>
-    <created>2017-09-25T23:28:21</created>
-    <modified>2017-09-25T23:28:21</modified>
+    <created>2017-09-25T23:32:00</created>
+    <modified>2017-09-25T23:32:00</modified>
     <unit name="meter" meter="1"/>
     <up_axis>Z_UP</up_axis>
   </asset>
@@ -188,122 +188,7 @@
       </extra>
     </light>
   </library_lights>
-  <library_images>
-    <image id="devilboy_Body_Diffuse" name="devilboy_Body_Diffuse">
-      <init_from>devilboy_Body_Diffuse.png</init_from>
-    </image>
-    <image id="devilboy_Body_Normal" name="devilboy_Body_Normal">
-      <init_from>devilboy_Body_Normal.png</init_from>
-    </image>
-    <image id="devilboy_Body_Opacity" name="devilboy_Body_Opacity">
-      <init_from>devilboy_Body_Opacity.png</init_from>
-    </image>
-    <image id="devilboy_Body_Specular" name="devilboy_Body_Specular">
-      <init_from>devilboy_Body_Specular.png</init_from>
-    </image>
-    <image id="devilboy_Body_Gloss" name="devilboy_Body_Gloss">
-      <init_from>devilboy_Body_Gloss.png</init_from>
-    </image>
-  </library_images>
-  <library_effects>
-    <effect id="Bodymat-effect">
-      <profile_COMMON>
-        <newparam sid="devilboy_Body_Diffuse-surface">
-          <surface type="2D">
-            <init_from>devilboy_Body_Diffuse</init_from>
-          </surface>
-        </newparam>
-        <newparam sid="devilboy_Body_Diffuse-sampler">
-          <sampler2D>
-            <source>devilboy_Body_Diffuse-surface</source>
-          </sampler2D>
-        </newparam>
-        <newparam sid="devilboy_Body_Specular-surface">
-          <surface type="2D">
-            <init_from>devilboy_Body_Specular</init_from>
-          </surface>
-        </newparam>
-        <newparam sid="devilboy_Body_Specular-sampler">
-          <sampler2D>
-            <source>devilboy_Body_Specular-surface</source>
-          </sampler2D>
-        </newparam>
-        <newparam sid="devilboy_Body_Normal-surface">
-          <surface type="2D">
-            <init_from>devilboy_Body_Normal</init_from>
-          </surface>
-        </newparam>
-        <newparam sid="devilboy_Body_Normal-sampler">
-          <sampler2D>
-            <source>devilboy_Body_Normal-surface</source>
-          </sampler2D>
-        </newparam>
-        <technique sid="common">
-          <lambert>
-            <emission>
-              <color sid="emission">0 0 0 1</color>
-            </emission>
-            <ambient>
-              <color sid="ambient">0 0 0 1</color>
-            </ambient>
-            <diffuse>
-              <texture texture="devilboy_Body_Diffuse-sampler"/>
-            </diffuse>
-            <specular>
-              <texture texture="devilboy_Body_Specular-sampler"/>
-            </specular>
-            <reflective>
-              <color>1 1 1 1</color>
-            </reflective>
-            <reflectivity>
-              <float>0.04</float>
-            </reflectivity>
-            <transparent opaque="A_ONE">
-              <color>1 1 1 0</color>
-            </transparent>
-            <index_of_refraction>
-              <float sid="index_of_refraction">1</float>
-            </index_of_refraction>
-          </lambert>
-          <extra>
-            <technique profile="FCOLLADA">
-              <bump>
-                <texture texture="devilboy_Body_Normal-sampler"/>
-              </bump>
-            </technique>
-          </extra>
-        </technique>
-      </profile_COMMON>
-    </effect>
-    <effect id="Material_001-effect">
-      <profile_COMMON>
-        <technique sid="common">
-          <lambert>
-            <emission>
-              <color sid="emission">0 0 0 1</color>
-            </emission>
-            <ambient>
-              <color sid="ambient">0 0 0 1</color>
-            </ambient>
-            <diffuse>
-              <color sid="diffuse">0.674675 0 0 1</color>
-            </diffuse>
-            <index_of_refraction>
-              <float sid="index_of_refraction">1</float>
-            </index_of_refraction>
-          </lambert>
-        </technique>
-      </profile_COMMON>
-    </effect>
-  </library_effects>
-  <library_materials>
-    <material id="Bodymat-material" name="Bodymat">
-      <instance_effect url="#Bodymat-effect"/>
-    </material>
-    <material id="Material_001-material" name="Material_001">
-      <instance_effect url="#Material_001-effect"/>
-    </material>
-  </library_materials>
+  <library_images/>
   <library_geometries>
     <geometry id="Bodymesh_001-mesh" name="Bodymesh.001">
       <mesh>
@@ -4390,13 +4275,7 @@
         <rotate sid="rotationY">0 1 0 -8.53774e-7</rotate>
         <rotate sid="rotationX">1 0 0 -8.53772e-7</rotate>
         <scale sid="scale">1 1 1</scale>
-        <instance_geometry url="#Bodymesh_001-mesh" name="Body">
-          <bind_material>
-            <technique_common>
-              <instance_material symbol="Bodymat-material" target="#Bodymat-material"/>
-            </technique_common>
-          </bind_material>
-        </instance_geometry>
+        <instance_geometry url="#Bodymesh_001-mesh" name="Body"/>
       </node>
       <node id="default" name="default" type="NODE">
         <translate sid="location">0 0 0</translate>
@@ -4406,11 +4285,6 @@
         <scale sid="scale">1 1 1</scale>
         <instance_controller url="#Armature_default-skin">
           <skeleton>#Armature_mixamorig_Hips</skeleton>
-          <bind_material>
-            <technique_common>
-              <instance_material symbol="Bodymat-material" target="#Bodymat-material"/>
-            </technique_common>
-          </bind_material>
         </instance_controller>
       </node>
       <node id="Bottoms" name="Bottoms" type="NODE">
@@ -4421,11 +4295,6 @@
         <scale sid="scale">1 1 1</scale>
         <instance_controller url="#Armature_Bottoms-skin">
           <skeleton>#Armature_mixamorig_Hips</skeleton>
-          <bind_material>
-            <technique_common>
-              <instance_material symbol="Material_001-material" target="#Material_001-material"/>
-            </technique_common>
-          </bind_material>
         </instance_controller>
       </node>
       <node id="Lamp_001" name="Lamp_001" type="NODE">
